@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		648A97151B235ED5007EBAF6 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A97141B235ED5007EBAF6 /* GraphViewController.swift */; };
+		648A97171B23C488007EBAF6 /* icon_line-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 648A97161B23C488007EBAF6 /* icon_line-chart.png */; };
+		648A97191B24A464007EBAF6 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A97181B24A463007EBAF6 /* GraphView.swift */; };
 		64E5A2D21B201C46002E16D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5A2D11B201C46002E16D6 /* AppDelegate.swift */; };
-		64E5A2D41B201C46002E16D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5A2D31B201C46002E16D6 /* ViewController.swift */; };
-		64E5A2D71B201C46002E16D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E5A2D51B201C46002E16D6 /* Main.storyboard */; };
 		64E5A2D91B201C46002E16D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64E5A2D81B201C46002E16D6 /* Images.xcassets */; };
 		64E5A2DC1B201C46002E16D6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E5A2DA1B201C46002E16D6 /* LaunchScreen.xib */; };
 		64E5A2E81B201C47002E16D6 /* Graphing_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5A2E71B201C47002E16D6 /* Graphing_CalculatorTests.swift */; };
+		64E5A2F21B201D31002E16D6 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5A2F11B201D31002E16D6 /* CalculatorViewController.swift */; };
+		64E5A2F41B201D41002E16D6 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5A2F31B201D41002E16D6 /* CalculatorBrain.swift */; };
+		64E5A2F61B201F34002E16D6 /* AxesDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5A2F51B201F34002E16D6 /* AxesDrawer.swift */; };
+		64E5A2F81B201FE7002E16D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E5A2F71B201FE7002E16D6 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +31,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		648A97141B235ED5007EBAF6 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = ../GraphViewController.swift; sourceTree = "<group>"; };
+		648A97161B23C488007EBAF6 /* icon_line-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_line-chart.png"; sourceTree = "<group>"; };
+		648A97181B24A463007EBAF6 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		64E5A2CC1B201C46002E16D6 /* Graphing Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Graphing Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E5A2D01B201C46002E16D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64E5A2D11B201C46002E16D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		64E5A2D31B201C46002E16D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		64E5A2D61B201C46002E16D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64E5A2D81B201C46002E16D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		64E5A2DB1B201C46002E16D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		64E5A2E11B201C47002E16D6 /* Graphing CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Graphing CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E5A2E61B201C47002E16D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64E5A2E71B201C47002E16D6 /* Graphing_CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphing_CalculatorTests.swift; sourceTree = "<group>"; };
+		64E5A2F11B201D31002E16D6 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		64E5A2F31B201D41002E16D6 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
+		64E5A2F51B201F34002E16D6 /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
+		64E5A2F71B201FE7002E16D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +87,12 @@
 		64E5A2CE1B201C46002E16D6 /* Graphing Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				64E5A2D11B201C46002E16D6 /* AppDelegate.swift */,
-				64E5A2D31B201C46002E16D6 /* ViewController.swift */,
-				64E5A2D51B201C46002E16D6 /* Main.storyboard */,
-				64E5A2D81B201C46002E16D6 /* Images.xcassets */,
-				64E5A2DA1B201C46002E16D6 /* LaunchScreen.xib */,
+				64E5A2F31B201D41002E16D6 /* CalculatorBrain.swift */,
+				64E5A2F71B201FE7002E16D6 /* Main.storyboard */,
+				648A97181B24A463007EBAF6 /* GraphView.swift */,
+				64E5A2F51B201F34002E16D6 /* AxesDrawer.swift */,
+				64E5A2F11B201D31002E16D6 /* CalculatorViewController.swift */,
+				648A97141B235ED5007EBAF6 /* GraphViewController.swift */,
 				64E5A2CF1B201C46002E16D6 /* Supporting Files */,
 			);
 			path = "Graphing Calculator";
@@ -90,6 +101,10 @@
 		64E5A2CF1B201C46002E16D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				648A97161B23C488007EBAF6 /* icon_line-chart.png */,
+				64E5A2D81B201C46002E16D6 /* Images.xcassets */,
+				64E5A2DA1B201C46002E16D6 /* LaunchScreen.xib */,
+				64E5A2D11B201C46002E16D6 /* AppDelegate.swift */,
 				64E5A2D01B201C46002E16D6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,7 +207,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64E5A2D71B201C46002E16D6 /* Main.storyboard in Resources */,
+				64E5A2F81B201FE7002E16D6 /* Main.storyboard in Resources */,
+				648A97171B23C488007EBAF6 /* icon_line-chart.png in Resources */,
 				64E5A2DC1B201C46002E16D6 /* LaunchScreen.xib in Resources */,
 				64E5A2D91B201C46002E16D6 /* Images.xcassets in Resources */,
 			);
@@ -212,8 +228,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64E5A2D41B201C46002E16D6 /* ViewController.swift in Sources */,
+				64E5A2F41B201D41002E16D6 /* CalculatorBrain.swift in Sources */,
+				648A97151B235ED5007EBAF6 /* GraphViewController.swift in Sources */,
+				64E5A2F61B201F34002E16D6 /* AxesDrawer.swift in Sources */,
+				64E5A2F21B201D31002E16D6 /* CalculatorViewController.swift in Sources */,
 				64E5A2D21B201C46002E16D6 /* AppDelegate.swift in Sources */,
+				648A97191B24A464007EBAF6 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +256,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		64E5A2D51B201C46002E16D6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64E5A2D61B201C46002E16D6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		64E5A2DA1B201C46002E16D6 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -407,6 +419,7 @@
 				64E5A2ED1B201C47002E16D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64E5A2EE1B201C47002E16D6 /* Build configuration list for PBXNativeTarget "Graphing CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +428,7 @@
 				64E5A2F01B201C47002E16D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

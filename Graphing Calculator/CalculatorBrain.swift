@@ -10,14 +10,19 @@ import Foundation
 
 class CalculatorBrain {
     
-    
     private var opStack = [Op]()
     private var knownOps = [String:Op]()
     private var constantValues = [String:Double]()
     private var descriptionStack = [String]()
+    private struct savedData {
+        static let calcKey = "calcBrain"
+    }
+    
     var historyString = String()
     var variableValues = [String:Double]()
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let variableKey = "M"
     
     private enum Op: Printable
     {
@@ -69,6 +74,30 @@ class CalculatorBrain {
         
     }
     
+    var program: AnyObject? {  // guaranteed to be a PropertyList
+        get {
+            return opStack.map { $0.description }
+        }
+        set {
+            if let opSymbols = newValue as? Array<String> {
+                var newOpStack = [Op]()
+                for opSymbol in opSymbols {
+                    if let op = knownOps[opSymbol] {
+                        newOpStack.append(op)
+                    } else if let pi = constantValues[opSymbol] {
+                        newOpStack.append(Op.Constant(opSymbol))
+                    } else if opSymbol == variableKey {
+                        newOpStack.append(Op.Variable(opSymbol))
+                    }
+                    else if let operand = NSNumberFormatter().numberFromString(opSymbol)?.doubleValue {
+                        newOpStack.append(Op.Operand(operand))
+                    }
+                }
+                opStack = newOpStack
+            }
+        }
+    }
+    
 
     
     init() {
@@ -85,13 +114,29 @@ class CalculatorBrain {
         
         constantValues["π"] = M_PI
         constantValues["-π"] = -1*M_PI
-            
+        
+        program = defaults.objectForKey(savedData.calcKey)
+        
+        descriptionStackInit(opStack)
+        
+        if program != nil {
+            println("Successfully loaded Calculator Brain")
+            println("program = \(program!)")
+            println("opStack = \(opStack)")
+//            historyString = description
+            println("historyString = \(historyString)")
+            println("descriptionStack = \(descriptionStack)")
+        }
+        
+        
 //        knownOps["×"] = Op.BinaryOperation("×", *)
 //        knownOps["÷"] = Op.BinaryOperation("÷") { $1 / $0 }
 //        knownOps["+"] = Op.BinaryOperation("+", +)
 //        knownOps["−"] = Op.BinaryOperation("−") { $1 - $0 }
 //        knownOps["√"] = Op.UnaryOperation("√", sqrt)
     }
+    
+    
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op])
     {
@@ -130,6 +175,7 @@ class CalculatorBrain {
         return (nil, ops)
     }
     
+    
     func evaluate() -> Double? {
         let (result, remainder) = evaluate(opStack)
 //        if opStack.count > 1 && remainder.isEmpty {
@@ -140,6 +186,8 @@ class CalculatorBrain {
         historyString = self.description
 //        println("The description = " + historyString)
         println("descriptionStack = \(descriptionStack)")
+        defaults.setObject(program!, forKey: savedData.calcKey)
+        println("saving program = \(program!)")
         return result
     }
     
@@ -214,6 +262,36 @@ class CalculatorBrain {
         return (nil, ops)
     }
     
+
+    private func descriptionStackInit(var ops: [Op]) {
+    
+        var op = ops.last
+        var opsNext = [Op]()
+        var numOfOp = ops.count
+        var result: String?
+        var remainder: [Op]
+        
+        for var index = 0; index < numOfOp; index++ {
+            
+            if index == 0 {
+                (result, remainder) = brainContent(ops)
+            } else {
+                (result, remainder) = brainContent(opsNext)
+            }
+            
+            descriptionStack.append(result!)
+            
+            if remainder.isEmpty {
+                descriptionStack = descriptionStack.reverse()
+                historyString = ", ".join(descriptionStack)
+                break
+            } else {
+                opsNext = remainder
+            }
+            
+        } // close for loop
+    }
+    
     
     var description: String {
         get {
@@ -221,6 +299,8 @@ class CalculatorBrain {
             var op = opStack.last
             let (result, remainder) = brainContent(opStack)
             var indexDescription = 0
+            
+            println("Inside description: \(opStack) = \(result) with \(remainder) left over")
             
             // track results of operands and operators as complete strings
             if descriptionStack.count == 0 {
@@ -230,7 +310,7 @@ class CalculatorBrain {
                 }
             }
             else if descriptionStack.count == 1 {
-                if result == nil {  // if binary operation
+                if result == nil {  // error edge case, handle if binary operation
                     let opLast = opStack.removeLast()
                     let descriptionLast = descriptionStack.removeLast()
                     descriptionStack.append("(?" + opLast.description + descriptionLast + ")")
@@ -310,7 +390,9 @@ class CalculatorBrain {
     func clearCalculator() {
         opStack.removeAll()
         descriptionStack.removeAll()
-        variableValues.removeValueForKey("M")
+        variableValues.removeValueForKey(variableKey)
+        program = nil
+        defaults.setObject(program!, forKey: savedData.calcKey)
     }
     
     

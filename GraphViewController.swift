@@ -8,28 +8,27 @@
 
 import UIKit
 
-class GraphViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+class GraphViewController: UIViewController, GraphViewDataSource {
+    
+    private var brain = CalculatorBrain()
+    
+    @IBOutlet weak var graphView: GraphView! {
+        didSet {
+            graphView.dataSource = self
+            graphView.addGestureRecognizer(UIPinchGestureRecognizer(target: graphView, action: "handleScale:"))
+            graphView.addGestureRecognizer(UIPanGestureRecognizer(target: graphView, action: "handlePan:"))
+            graphView.addGestureRecognizer(UITapGestureRecognizer(target: graphView, action: "handleTap:"))
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func funcValueForGraphView(sender: GraphView, x: CGFloat) -> CGFloat? {
+        brain.variableValues[brain.variableKey] = Double(x)
+        if let y = brain.evaluateVariable() {
+            return CGFloat(y)
+        }
+        return nil
     }
-    */
 
 }

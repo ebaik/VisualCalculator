@@ -43,6 +43,7 @@ class AxesDrawer
 
     func drawAxesInRect(bounds: CGRect, origin: CGPoint, pointsPerUnit: CGFloat)
     {
+        println("pointsPerUnit = \(pointsPerUnit)")
         CGContextSaveGState(UIGraphicsGetCurrentContext())
         color.set()
         let path = UIBezierPath()
@@ -113,6 +114,7 @@ class AxesDrawer
                     drawHashmarkAtLocation(bottomHashmarkPoint, .Left("-\(label)"))
                 }
                 bbox.inset(dx: -pointsPerHashmark, dy: -pointsPerHashmark)
+                
             }
         }
     }

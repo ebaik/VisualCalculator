@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController
+class CalculatorViewController: UIViewController
 {
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UILabel!
@@ -18,6 +18,24 @@ class ViewController: UIViewController
     let dotString = "."
     
     var brain = CalculatorBrain()
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var destination = segue.destinationViewController as? UIViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController
+        }
+        if let gvc = destination as? GraphViewController {
+            if let identifier = segue.identifier {
+                switch identifier {
+                case "Show Graph":
+                    println("showing graph")
+                    gvc.title = brain.description.componentsSeparatedByString(", ").last ?? "Graph"
+                default:
+                    break
+                }
+            }
+        }
+    }
 
     @IBAction func appendDigit(sender: UIButton) {
         
@@ -70,9 +88,9 @@ class ViewController: UIViewController
     
     @IBAction func backButton(sender: UIButton) {
             
-        if userIsInTheMiddleOfTypingANumber && countElements(display.text!) > 1 {
+        if userIsInTheMiddleOfTypingANumber && count(display.text!) > 1 {
             display.text = dropLast(display.text!)
-        } else if userIsInTheMiddleOfTypingANumber && countElements(display.text!) == 1 {
+        } else if userIsInTheMiddleOfTypingANumber && count(display.text!) == 1 {
             display.text = " "
             userIsInTheMiddleOfTypingANumber = false
         }
